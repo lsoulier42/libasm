@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 03:30:59 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/04 04:07:09 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/04 04:39:14 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define MAIN_H
 # include "libasm.h"
 # include <errno.h>
+# include <stdlib.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
