@@ -1,6 +1,6 @@
-global ft_write
-extern __errno_location
-section .text
+	global ft_write
+	extern __errno_location
+	section .text
 ft_write:
 	push rbp
 	mov rbp, rsp

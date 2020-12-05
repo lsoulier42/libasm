@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:05:15 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 16:16:24 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 18:02:19 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	test_ft_strlen(void)
 {
-	char test_strs[][] = {"Pika pika!!", "", "Lorem Ipsum is simply \
+	char *test_strs[] = {"Pika pika!!", "", "Lorem Ipsum is simply \
 	dummy text of the printing and \
 	typesetting industry. Lorem Ipsum has been the industry's standard dummy \
 	text ever since the 1500s, when an unknown printer took a galley of type \
@@ -31,8 +31,10 @@ int	test_ft_strlen(void)
 	printf("Tests for ft_strlen function :\n");
 	while (test_strs[++i])
 	{
+		return_real = 0;
+		return_ft = 0;
 		printf("For the following strings : |%s|\n", test_strs[i]);
-		return_real = strlen(test_strs[i];
+		return_real = strlen(test_strs[i]);
 		printf("The return of strlen is : %d\n", return_real);
 		return_ft = ft_strlen(test_strs[i]);
 		printf("The return of ft_strlen is : %d\n", return_ft);

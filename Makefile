@@ -9,13 +9,14 @@ LIBDIR= libasm
 HEADER= -I includes -I $(LIBDIR)
 LDFLAGS= -L./$(LIBDIR)
 LIB= -lasm
-NAME=	test_libasm
+NAME=	my_libasm_test
 
 .c.o:
 	$(CC) $(CFLAGS) $(HEADER) -c $< -o $(<:.c=.o)
 $(NAME): $(OBJS)
 	make -C $(LIBDIR)
-	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME) $(LIBS)
+	rm -f ./test_files/write_test_file
+	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(NAME) $(LIB)
 all: $(NAME)
 clean:
 	rm -f $(OBJS)

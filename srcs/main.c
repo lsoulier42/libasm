@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 03:36:05 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/04 04:01:12 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 18:06:50 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int ac, char **av)
 	else if (ac == 2)
 	{
 		arg = atoi(av[1]);
-		if (arg >= 1 && arg <= 7)
+		if (arg >= 0 && arg <= 6)
 		{
 			if (!map_function(arg))
 				printf("Error\nThe test function failed\n");

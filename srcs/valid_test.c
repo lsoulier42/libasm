@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 16:09:48 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 16:14:36 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 19:16:26 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void valid_test(int return_value)
 {
 	if (return_value == 1)
-		printf("\xE2\x9C\x85\n");
+		printf("\x1b[32m[OK]\x1b[0m\n");
 	else
-		printf("\xE2\x9D\x8C\n");
+		printf("\x1b[31m[KO]\x1b[0m\n");
 }

@@ -4,14 +4,13 @@ ft_strcpy:
 	push rbp
 	mov rbp, rsp
 	xor rdx, rdx
-	cmp [rsi], byte 0
-	je done
 copy:
+	cmp [rsi + rdx], byte 0
+	je done
 	mov cl, [rsi + rdx]
 	mov [rdi + rdx], cl
 	inc rdx
-	cmp [rsi + rdx], byte 0
-	jne copy
+	jmp copy
 done:
 	mov [rdi + rdx], byte 0
 	mov rax, rdi

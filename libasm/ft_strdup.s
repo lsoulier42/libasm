@@ -21,14 +21,15 @@ alloc_word:
 	pop rdi
 	xor rdx, rdx
 	xor sil, sil
-	mov sil, [rdi]
-	mov [rax], sil
 copy_word:
-	inc rdx
+	cmp [rdi + rdx], byte 0
+	je null_byte
 	mov sil, [rdi + rdx]
 	mov [rax + rdx], sil
-	cmp sil, 0
-	jne copy_word
+	inc rdx
+	jmp copy_word
+null_byte:
+	mov [rax + rdx], byte 0
 done:
 	mov rsp, rbp
 	pop rbp

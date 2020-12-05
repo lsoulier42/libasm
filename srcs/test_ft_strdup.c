@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:09:29 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 12:40:52 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 18:03:08 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	test_ft_strdup(void)
 {
 	char *str_returned_real;
 	char *str_returned_ft;
-	char test_strs[][] = {"a", "", "T'es tendue comme une crampe...\
+	char *test_strs[] = {"a", "", "T'es tendue comme une crampe...\
 	Si t'es tendue... Si je te dis t'es tendue, t'es tendue !! \
 	\nC'est pas à toi de dire je ne suis pas tendue !! \
 	\nJe te dis t'es tendue Natacha c'est tout ! Alors tu me dis oui Claudy\
@@ -40,6 +40,7 @@ int	test_ft_strdup(void)
 		}
 		printf("The return of strdup is : |%s|\n", str_returned_real);
 		printf("The return of ft_strdup is : |%s|\n", str_returned_ft);
+		valid_test(strcmp(str_returned_real, str_returned_ft) == 0);
 		free(str_returned_real);
 		free(str_returned_ft);
 	}

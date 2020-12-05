@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:07:19 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 12:25:46 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 18:01:39 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	test_ft_strcpy(void)
 {
 	char dest_real[1000];
 	char dest_ft[1000];
-	char test_strs[][] = {"Batman et Robin", "", "Je ne crois pas qu'il y ait \
+	char *test_strs[] = {"Batman et Robin", "", "Je ne crois pas qu'il y ait \
 	de bonnes ou de mauvaises situations \
 	moi si je devais resumer ma vie aujourd'hui, je dirais que c'est avant des \
 	rencontres. Des gens qui m'ont tendu la main a un moment ou je ne pouvais pas \
@@ -35,9 +35,12 @@ int	test_ft_strcpy(void)
 	printf("Tests for ft_strcpy function :\n");
 	while (test_strs[++i])
 	{
+		bzero(dest_real, 1000);
+		bzero(dest_ft, 1000);
 		printf("For the following string : |%s|\n", test_strs[i]);
 		printf("The return of strcpy is : |%s|\n", strcpy(dest_real, test_strs[i]));
 		printf("The return of ft_strcpy is : |%s|\n", ft_strcpy(dest_ft, test_strs[i]));
+		valid_test(strcmp(dest_real, dest_ft) == 0);
 	}
 	return (1);
 }

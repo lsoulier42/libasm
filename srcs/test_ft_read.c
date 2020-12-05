@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:08:47 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 16:09:08 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 18:32:05 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,29 @@ int	test_ft_read(void)
 {
 	int fd_real;
 	int fd_ft;
-	char test_files[][] = {"empty_file", "huge_file", 
-		"notfound_file", "/home/user42/", "zelda_file", NULL};
+	char *test_files[] = {"./test_files/empty_file", 
+		"notfound_file", "/home/user42/", "./test_files/zelda_file", NULL};
 	int i = -1;
 	int ret_real;
 	int ret_ft;
-	char *buf_real;
-	char *buf_ft;
+	char buf_real[BUFFER_SIZE + 1];
+	char buf_ft[BUFFER_SIZE + 1];
+	int errno_real;
+	int errno_ft;
 
 
 	printf("Tests for ft_read function with BUFFER_SIZE = %d:\n", BUFFER_SIZE);
 	while (test_files[++i])
 	{
-		int fd_real = open(test_files[i], O_RDONLY);
-		int fd_ft = open(test_files[i], O_RDONLY);
+		printf("The file tested is |%s|\n", test_files[i]);
+		fd_real = open(test_files[i], O_RDONLY);
+		fd_ft = open(test_files[i], O_RDONLY);
+		ret_real = -1;
+		ret_ft = -1;
+		errno_real = -1;
+		errno_ft = -1;
+		bzero(buf_real, BUFFER_SIZE + 1);
+		bzero(buf_ft, BUFFER_SIZE + 1);
 		if (strcmp(test_files[i], "notfound_file") != 0
 			&& (fd_real == -1 || fd_ft == -1))
 		{
@@ -45,26 +54,58 @@ int	test_ft_read(void)
 			printf("Read returned %d\n", ret_real);
 			if (ret_real == -1)
 			{
-				printf("Errno for read() from libc was set with %d\n", errno);
-				printf("Strerror with read() from libc returns |%s|\n", strerror(errno));
+				errno_real = errno;
+				printf("Errno for read() from libc was set with %d\n", errno_real);
+				printf("Strerror with read() from libc returns |%s|\n", strerror(errno_real));
 			}
-			ret_ft = ft_read(fd_ft, buf_ft, BUFFERS_SIZE);
+			else
+				buf_real[ret_real] = '\0';
+			ret_ft = ft_read(fd_ft, buf_ft, BUFFER_SIZE);
+			printf("ft_read returned %d\n", ret_ft);
+			valid_test(ret_real == ret_ft);
 			if (ret_ft == -1)
 			{
-				printf("Errno for ft_read was set with %d\n", errno);
-				printf("Strerror with ft_read() returns |%s|\n", strerror(errno));
+				errno_ft = errno;
+				printf("Errno for ft_read was set with %d\n", errno_ft);
+				printf("Strerror with ft_read() returns |%s|\n", strerror(errno_ft));
 			}
+			else
+				buf_ft[ret_ft] = '\0';
 			if (ret_real == -1 || ret_ft == -1)
+			{
+				valid_test(errno_real == errno_ft);
 				break ;
-			printf("ft_read returned %d\n", ret_ft);
-			printf("The buffer was filled with |%s| with read() from libc\n", buf_real);
-			printf("The buffer was filled with |%s| with ft_read()\n", buf_ft);
-			printf("Strcmp of the 2 buffers is : %d\n", strcmp(buf_real, buf_ft));
+			}
+			if (ret_real != -1)
+				printf("The buffer was filled with |%s| with read() from libc\n", buf_real);
+			if (ret_ft != -1)	
+				printf("The buffer was filled with |%s| with ft_read()\n", buf_ft);
+			valid_test(strcmp(buf_real, buf_ft) == 0);
 			if (ret_real == 0 && ret_ft == 0)
 				break ;
 		}
 		close(fd_real);
 		close(fd_ft);
+	}
+	ret_ft = 0;
+	bzero(buf_ft, BUFFER_SIZE + 1);
+	printf("The next part is to test ft_read with STDIN, with BUFFER_SIZE = %d\n", BUFFER_SIZE);
+	printf("Press Ctrl+D when you're done\n");
+	while ((ret_ft = ft_read(1, buf_ft, BUFFER_SIZE)) != 0)
+	{
+		if (ret_ft < BUFFER_SIZE)
+			buf_ft[ret_ft - 1] = '\0'; //to trim \n
+		else
+			buf_ft[ret_ft] = '\0';
+		if (ret_ft == -1)
+		{
+			printf("Error while readinf STDIN\n");
+			printf("Errno was set to %d\n", errno);
+			printf("%s\n", strerror(errno));
+			break ;
+		}
+		printf("Ft_read returns : %d\n", ret_ft);
+		printf("And the buffer was filled with |%s|\n", buf_ft);
 	}
 	return (1);
 }

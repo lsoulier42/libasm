@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:07:46 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 16:21:33 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 19:23:29 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static char	*ret_cmp(int return_value)
 {
 	char	*ret_str;
 
+	ret_str = NULL;
 	if (return_value == 0)
 		ret_str = "is 0";
 	else if (return_value < 0)
@@ -27,17 +28,19 @@ static char	*ret_cmp(int return_value)
 
 int			test_ft_strcmp(void)
 {
-	char	test_strs[][] = {"a", "b", "aa", "dd", "test", "test", "zest", 
+	char	*test_strs[] = {"a", "b", "aa", "dd", "test", "test", "zest", 
 		"best", "djfndjfadfj", "ejfnjweifnfiw", "abc", "abd", 
 		"\xff", "\xff\xff", "anticonstitutionnellement", 
 		"anticonstitutionnellement", NULL};
 	int i = 0;
 	char *ret_real;
 	char *ret_ft;
-
+		
 	printf("Tests for ft_strcmp function :\n");
 	while(test_strs[i])
 	{
+		ret_real = NULL;
+		ret_ft = NULL;
 		printf("Test with the following strings s1=|%s| et s2=|%s|\n", 
 			test_strs[i], test_strs[i + 1]);
 		ret_real = ret_cmp(strcmp(test_strs[i], test_strs[i + 1]));
