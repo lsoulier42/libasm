@@ -16,18 +16,12 @@
 # include <errno.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <stdlib.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <string.h>
 # define BUFFER_SIZE 42
 
-void	ft_putstr_endl(char *str);
-void	ft_putstr(char *str);
-char	*ft_itoa(int n);
-int		ft_atoi(const char *str);
-int		is_whitespace(int c);
 int		map_function(int arg_input);
 int		test_all_functions(void);
 int		test_ft_strlen(void);

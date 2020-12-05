@@ -43,23 +43,27 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 	{
-		ft_putstr_endl("Choose a number to test libasm:");
-		ft_putstr_endl("0. ft_strlen\n1. ft_strcpy\n2. ft_strcmp");
-		ft_putstr_endl("3. ft_write\n4. ft_read\n 5. ft_strdup");
-		ft_putstr_endl("6. all functions");
+		printf("Choose a number in param to test libasm:\n");
+		printf("0. ft_strlen\n");
+		printf("1. ft_strcpy\n");
+		printf("2. ft_strcmp\n");
+		printf("3. ft_write\n");
+		printf("4. ft_read\n");
+		printf("5. ft_strdup\n");
+		printf("6. all functions\n");
 	}
 	else if (ac == 2)
 	{
-		arg = ft_atoi(av[1]);
+		arg = atoi(av[1]);
 		if (arg >= 1 && arg <= 7)
 		{
 			if (!map_function(arg))
-				ft_putstr("Error\nThe test function failed\n");
+				printf("Error\nThe test function failed\n");
 		}
 		else
-			ft_putstr("Error\nNo test is matching your number.\n");
+			printf("Error\nNo test is matching your number.\n");
 	}
 	else
-		ft_putstr("Error\nInvalid number of argument.\n");
+		printf("Error\nInvalid number of argument.\n");
 	return (0);
 }

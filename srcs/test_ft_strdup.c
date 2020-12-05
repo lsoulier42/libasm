@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:09:29 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/04 04:09:44 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 12:40:52 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,34 @@
 
 int	test_ft_strdup(void)
 {
+	char *str_returned_real;
+	char *str_returned_ft;
+	char test_strs[][] = {"a", "", "T'es tendue comme une crampe...\
+	Si t'es tendue... Si je te dis t'es tendue, t'es tendue !! \
+	\nC'est pas à toi de dire je ne suis pas tendue !! \
+	\nJe te dis t'es tendue Natacha c'est tout ! Alors tu me dis oui Claudy\
+	, c'est vrai je suis tendue, je ne suis pas à mon aise.\
+	\nIl faut que tu te laisses venir vers moi, \
+	et je viendrais te chercher t'inquiète pas..", NULL};
+	int i = -1;
 
+	printf("Tests for ft_strdup function :\n");
+	while (test_strs[++i])
+	{
+		printf("For the following string : |%s|\n", test_strs[i]);
+		str_returned_real = strdup(test_strs[i]);
+		if (!str_returned_real)
+			return (0);
+		str_returned_ft = ft_strdup(test_strs[i]);
+		if (!str_returned_ft)
+		{
+			free(str_returned_real);
+			return (0);
+		}
+		printf("The return of strdup is : |%s|\n", str_returned_real);
+		printf("The return of ft_strdup is : |%s|\n", str_returned_ft);
+		free(str_returned_real);
+		free(str_returned_ft);
+	}
+	return (1);
 }
