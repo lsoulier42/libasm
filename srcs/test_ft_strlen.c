@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 04:05:15 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/05 12:26:02 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 16:16:24 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,19 @@ int	test_ft_strlen(void)
 	of Letraset sheets containing Lorem Ipsum passages, and more recently \
 	with desktop publishing software like \
 	Aldus PageMaker including versions of Lorem Ipsum", NULL};
-	int i;
-
-	i = -1;
+	int i = -1;
+	int return_real;
+	int return_ft;
 
 	printf("Tests for ft_strlen function :\n");
 	while (test_strs[++i])
 	{
 		printf("For the following strings : |%s|\n", test_strs[i]);
-		printf("The return of strlen is : %d\n", strlen(test_strs[i]));
-		printf("The return of ft_strlen is : %d\n", ft_strlen(test_strs[i]));
+		return_real = strlen(test_strs[i];
+		printf("The return of strlen is : %d\n", return_real);
+		return_ft = ft_strlen(test_strs[i]);
+		printf("The return of ft_strlen is : %d\n", return_ft);
+		valid_test(return_real == return_ft);
 	}
 	return (1);
 }

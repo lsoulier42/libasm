@@ -6,7 +6,7 @@
 /*   By: lsoulier <lsoulier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 03:30:59 by lsoulier          #+#    #+#             */
-/*   Updated: 2020/12/04 04:39:14 by lsoulier         ###   ########.fr       */
+/*   Updated: 2020/12/05 16:11:08 by lsoulier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ int		test_ft_strcmp(void);
 int		test_ft_write(void);
 int		test_ft_read(void);
 int		test_ft_strdup(void);
+void	valid_test(int return_value);
 #endif
